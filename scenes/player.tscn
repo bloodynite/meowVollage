@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://05gp17st7o1v"]
+[gd_scene load_steps=57 format=3 uid="uid://05gp17st7o1v"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4t26c"]
 [ext_resource type="Texture2D" uid="uid://okqdccaqcm3w" path="res://art/characters/player.png" id="2_nyakl"]
@@ -224,7 +224,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"back_atack",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -301,7 +301,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"front_atack",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -364,7 +364,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"side_atack",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -416,15 +416,37 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_tbvnw"]
 radius = 4.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xqxm5"]
+radius = 13.0
+
 [node name="player" type="CharacterBody2D"]
 y_sort_enabled = true
+collision_layer = 3
 script = ExtResource("1_4t26c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xjnyy")
-animation = &"front_idle"
+animation = &"side_atack"
+frame_progress = 0.443443
 offset = Vector2(0, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_tbvnw")
+
+[node name="player_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_xqxm5")
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="deal_attack" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
+[connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="deal_attack" to="." method="_on_deal_attack_timeout"]
