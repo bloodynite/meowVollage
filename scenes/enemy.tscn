@@ -224,6 +224,7 @@ animation = &"idle"
 [node name="detection_area" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
 position = Vector2(0, 6)
@@ -236,6 +237,7 @@ shape = SubResource("CircleShape2D_f3udi")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
 position = Vector2(0, 2)

@@ -435,9 +435,9 @@ position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_tbvnw")
 
 [node name="player_hitbox" type="Area2D" parent="."]
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
-position = Vector2(110, 266)
 shape = SubResource("CircleShape2D_xqxm5")
 
 [node name="attack_cooldown" type="Timer" parent="."]

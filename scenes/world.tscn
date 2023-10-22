@@ -289,12 +289,14 @@ position = Vector2(342, 112)
 [node name="collisions" type="StaticBody2D" parent="."]
 visible = false
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
 polygon = PackedVector2Array(-1, 158, 46, 158, 46, 142, 78, 142, 79, 126, 95, 126, 95, 110, 175, 111, 174, 77, 190, 77, 191, 61, 206, 62, 207, 45, 227, 45, 227, 62, 255, 62, 255, 45, 361, 46, 431, 46, 431, 29, 451, 30, 451, 45, 467, 45, 467, 62, 576, 62, 575, 46, 688, 46, 689, 29, 720, 29, 720, 91, 759, 91, 759, 138, 720, 138, 720, 212, 678, 212, 677, 227, 662, 228, 659, 259, 646, 261, 642, 291, 607, 292, 604, 258, 536, 260, 530, 273, 494, 275, 487, 257, 437, 261, 435, 291, 390, 294, 382, 310, 378, 309, 369, 324, 344, 324, 337, 339, 305, 340, 299, 327, 292, 329, 291, 338, 286, 338, 280, 322, 224, 324, 217, 307, 167, 310, 162, 324, 135, 325, 131, 339, 89, 340, 83, 352, -1, 352, 0, 163, -19, 163, -19, 365, 403, 365, 776, 365, 774, 25, 774, -15, 232, -14, -31, -14, -31, 157)
 metadata/_edit_lock_ = true
 
 [node name="cliff_side_transition" type="Area2D" parent="."]
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cliff_side_transition"]
 position = Vector2(739.5, 114.5)
