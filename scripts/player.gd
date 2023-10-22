@@ -16,6 +16,7 @@ func _physics_process(delta):
 	enemy_attack()
 	attack()
 	current_camera()
+	update_heath()
 	
 	if health <= 0:
 		player_alive = false #add game over
@@ -96,10 +97,11 @@ func _on_player_hitbox_body_exited(body):
 
 func enemy_attack():
 	if enemy_in_range_to_atack and enemy_atack_cooldown == true:
+		
 		health -= 20
 		enemy_atack_cooldown = false
 		$attack_cooldown.start()
-		print(health)
+		print(' hola')
 
 
 func _on_attack_cooldown_timeout():
@@ -138,3 +140,20 @@ func current_camera():
 	elif Global.current_scene == 'cliff_side':
 		$world_camera.enabled = false
 		$cliff_camera.enabled = true
+
+func update_heath():
+	var healthBarRef = $healthBar
+	healthBarRef.value = health
+	
+	if health >= 100:
+		healthBarRef.visible = false
+	else:
+		healthBarRef.visible = true
+
+func _on_regen_timer_timeout():
+	if health < 100:
+		health += 20
+	elif health > 100:
+		health = 100
+	elif health <= 0:
+		health = 0
