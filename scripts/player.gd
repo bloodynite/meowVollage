@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-const speed: int = 80
+const speed = 80
 var current_dir: String = "none"
 var enemy_in_range_to_atack: bool = false
 var enemy_atack_cooldown: bool = true
-var health: int = 300
+var health = 300
 var player_alive: bool = true
 var attack_in_progress: bool = false
 

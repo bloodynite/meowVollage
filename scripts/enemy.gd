@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-var speed: int = 45
+var speed = 45
 var player_chase: bool = false
 var player:Node2D = null
-var health: int = 300
+var health = 300
 var player_in_range_to_atack: bool = false
 var can_take_damage: bool = true
 
