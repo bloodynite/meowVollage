@@ -18,7 +18,6 @@ func _process(delta):
 
 func _on_cliff_side_transition_body_entered(body):
 	if body.has_method('player'):
-		print('player')
 		Global.transition_scene = true
 
 

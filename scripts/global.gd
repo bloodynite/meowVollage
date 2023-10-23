@@ -1,6 +1,12 @@
 extends Node
 
 var player_current_atack: bool = false
+var player_initial_health =  300
+var player_atack_damage = 30
+var player_regeneration = 20
+
+var enemy_atack_damage = 20
+var enemy_initial_health = 100
 
 var current_scene = "world"
 var transition_scene = false
