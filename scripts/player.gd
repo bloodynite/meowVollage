@@ -8,6 +8,10 @@ var health: int = 300
 var player_alive: bool = true
 var attack_in_progress: bool = false
 
+var is_player_in_quest_area = false
+
+@onready var actionable_finder: Area2D = $Direction/ActionableFinder
+
 func _ready():
 	$AnimatedSprite2D.play("front_idle")
 
@@ -25,32 +29,54 @@ func _physics_process(delta):
 		self.queue_free()
 	
 func player_movement(delta):
-	
 	if Input.is_action_pressed("ui_right"):
+		$Direction.position.y = 0
+		$Direction.position.x = 5
+		$Direction.rotation = 0
+		$Direction.rotation = -90
 		current_dir = 'right'
 		play_animation(1)
 		velocity.x = speed
 		velocity.y = 0
 	elif Input.is_action_pressed("ui_left"):
+		$Direction.position.y = 0
+		$Direction.position.x = -5
+		$Direction.rotation = 0
+		$Direction.rotation = 90
 		current_dir = 'left'
 		play_animation(1)
 		velocity.x = -speed
 		velocity.y = 0
 	elif Input.is_action_pressed("ui_up"):
+		$Direction.rotation = 0
+		$Direction.position.y = -15
+		$Direction.position.x = 0
 		current_dir = 'up'
 		play_animation(1)
 		velocity.x = 0
 		velocity.y = -speed
 	elif Input.is_action_pressed("ui_down"):
+		$Direction.position.y = 0
+		$Direction.position.x = 0
+		$Direction.rotation = 0
 		current_dir = 'down'
 		play_animation(1)
 		velocity.x = 0
 		velocity.y = speed
+	elif Input.is_action_just_pressed("ui_accept"):
+		print('Interactuando')
+		var actionables = actionable_finder.get_overlapping_areas()
+		print(actionables.size())
+		if actionables.size() > 0:
+			print('actionable')
+			actionables[0].action()
+			return
+#			DialogueManager.show_example_dialogue_balloon(load('res://dialogs/main.dialogue'), 'beared_guy')
 	else: 
 		play_animation(0)
 		velocity.x = 0
 		velocity.y = 0
-	
+		
 	move_and_slide()
 	
 func play_animation(movement):
@@ -151,9 +177,20 @@ func update_heath():
 		healthBarRef.visible = true
 
 func _on_regen_timer_timeout():
+<<<<<<< Updated upstream
 	if health < 100:
 		health += 20
 	elif health > 100:
 		health = 100
 	elif health <= 0:
 		health = 0
+=======
+	if current_health < Global.player_initial_health:
+		current_health += Global.player_regeneration
+		print('regenerating: ', current_health)
+		if current_health > Global.player_initial_health:
+			current_health = Global.player_initial_health
+	elif current_health <= 0:
+		current_health = 0
+
+>>>>>>> Stashed changes

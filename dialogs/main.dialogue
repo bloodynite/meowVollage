@@ -1,0 +1,34 @@
+~ beared_guy
+
+set Global.is_in_dialog = true
+if !Global.is_key_quest_complete:
+	if !Global.is_key_quest_active:
+		Beared Guy: ¡Ayy! ¿Donde la deje?
+		Beared Guy: ¡Siempre se me pierden las cosas!
+		Beared Guy: Hola amiguito. ¿Me ayudarias a buscar la LLAVE?
+		Beared Guy: ¡Que si! ¡Soy un descuidado!
+		- Ayudar.
+			Beared Guy: ¡Muchas gracias!
+			Beared Guy: Recuerdo que estaba tomando la siesta cerca de unos arboles cuando la perdi. 
+			Beared Guy: ¡Espero la puedas encontrar!
+			set Global.is_key_quest_active = true
+			set Global.is_in_dialog = false
+			=> END
+		- Ignorar.
+		set Global.is_in_dialog = false
+		=> END
+	else:
+		if !Global.is_key_found:
+			Beared Guy: ¿Aun no la has encontrado? Que sera de mi ¡AyYyyY!
+			Beared Guy: Recuerdo que estaba donde hay 2 arboles juntos.
+			set Global.is_in_dialog = false
+			=> END
+		else:
+			Beared Guy: ¡OooH La has encontrado! Muchas gracias.
+			set Global.is_key_quest_complete = true
+			set Global.is_in_dialog = false
+			=> END
+else:
+	Muchas gracias.
+	set Global.is_in_dialog = false
+	=> END
