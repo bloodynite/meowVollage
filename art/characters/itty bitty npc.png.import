@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gwcdt0mli810"
-path="res://.godot/imported/npcs.png-39ec722a85223a60a7d6a1ca341ef3a6.ctex"
+uid="uid://bsuf2moewbgu1"
+path="res://.godot/imported/itty bitty npc.png-1ad651ab13e1f740a6fdd6cc05550b91.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/characters/npcs.png"
-dest_files=["res://.godot/imported/npcs.png-39ec722a85223a60a7d6a1ca341ef3a6.ctex"]
+source_file="res://art/characters/itty bitty npc.png"
+dest_files=["res://.godot/imported/itty bitty npc.png-1ad651ab13e1f740a6fdd6cc05550b91.ctex"]
 
 [params]
 

@@ -1,55 +1,58 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwvo68sykko3d"]
+[gd_scene load_steps=9 format=3 uid="uid://d4c4nuo56kbym"]
 
-[ext_resource type="Texture2D" uid="uid://gwcdt0mli810" path="res://art/characters/npcs.png" id="1_0pbty"]
-[ext_resource type="Script" path="res://scripts/npc.gd" id="1_cju5d"]
+[ext_resource type="Texture2D" uid="uid://bsuf2moewbgu1" path="res://art/characters/itty bitty npc.png" id="1_38rlw"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="1_ydwwn"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bm6oq"]
-atlas = ExtResource("1_0pbty")
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1wmy"]
+atlas = ExtResource("1_38rlw")
 region = Rect2(208, 64, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rlnj4"]
-atlas = ExtResource("1_0pbty")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s8bk"]
+atlas = ExtResource("1_38rlw")
 region = Rect2(208, 80, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hls1i"]
-atlas = ExtResource("1_0pbty")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4n8yq"]
+atlas = ExtResource("1_38rlw")
 region = Rect2(208, 96, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qj4ks"]
-atlas = ExtResource("1_0pbty")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjl8c"]
+atlas = ExtResource("1_38rlw")
 region = Rect2(208, 112, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_yterv"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_estir"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bm6oq")
+"texture": SubResource("AtlasTexture_l1wmy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rlnj4")
+"texture": SubResource("AtlasTexture_8s8bk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hls1i")
+"texture": SubResource("AtlasTexture_4n8yq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qj4ks")
+"texture": SubResource("AtlasTexture_tjl8c")
 }],
 "loop": true,
-"name": &"idle",
-"speed": 0.5
+"name": &"looking",
+"speed": 1.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5bwb"]
-radius = 6.0
-height = 16.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m2h57"]
+radius = 5.83333
+height = 16.6667
 
 [node name="npc" type="StaticBody2D"]
+scale = Vector2(1.2, 1.2)
 collision_mask = 16
-script = ExtResource("1_cju5d")
+script = ExtResource("1_ydwwn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_yterv")
-animation = &"idle"
+position = Vector2(0, -4.16667)
+sprite_frames = SubResource("SpriteFrames_estir")
+animation = &"looking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_l5bwb")
+position = Vector2(0, -4.16667)
+shape = SubResource("CapsuleShape2D_m2h57")

@@ -1,9 +1,9 @@
-extends Node2D
+extends StaticBody2D
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimatedSprite2D.play("default")
+	$AnimatedSprite2D.play("rotate")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -14,11 +14,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	change_scene()
+	is_key_found()
 
 
 func _on_cliff_side_transition_body_entered(body):
 	if body.has_method('player'):
-		print('player')
 		Global.transition_scene = true
 
 
@@ -33,3 +33,7 @@ func change_scene():
 			get_tree().change_scene_to_file("res://scenes/cliff_side.tscn")
 			Global.finish_change_scene()
 			
+
+func is_key_found():
+	if Global.is_key_found:
+		$key.visible = false
