@@ -185,6 +185,7 @@ radius = 13.4371
 [node name="key" type="StaticBody2D"]
 scale = Vector2(0.3, 0.3)
 collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_f8m67")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

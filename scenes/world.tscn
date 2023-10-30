@@ -311,7 +311,6 @@ shape = SubResource("RectangleShape2D_yx1di")
 
 [node name="key" parent="." instance=ExtResource("7_u7h1s")]
 position = Vector2(442, 40)
-collision_layer = 1
 collision_mask = 16
 
 [node name="Actionable" parent="key" instance=ExtResource("8_cur8v")]
