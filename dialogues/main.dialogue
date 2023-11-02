@@ -1,0 +1,48 @@
+~ beared_guy
+
+set is_in_dialog = true
+if !is_key_quest_complete:
+	if !is_key_quest_active:
+		if !is_key_found:
+			ELRAFA: ¡Ayy! ¿Donde la deje?
+			ELRAFA: ¡Siempre se me pierden las cosas!
+			ELRAFA: Hola amiguito. ¿Me ayudarias a buscar la LLAVE?
+			ELRAFA: ¡Que si! ¡Soy un descuidado!
+			- Ayudar.
+				ELRAFA: ¡Muchas gracias!
+				ELRAFA: Recuerdo que estaba tomando la siesta cerca de unos arboles cuando la perdi. 
+				ELRAFA: ¡Espero la puedas encontrar!
+				set is_key_quest_active = true
+				set is_in_dialog = false
+				=> END
+			- Ignorar.
+			set is_in_dialog = false
+			=> END
+		else:
+			ELRAFA: ¡OooH La has encontrado! Muchas gracias.
+			set is_key_quest_complete = true
+			set is_in_dialog = false
+			=> END
+	else:
+		if !is_key_found:
+			ELRAFA: ¿Aun no la has encontrado? Que sera de mi ¡AyYyyY!
+			ELRAFA: Recuerdo que estaba donde hay 2 arboles juntos.
+			set is_in_dialog = false
+			=> END
+		else:
+			ELRAFA: ¡OooH La has encontrado! Muchas gracias.
+			set is_key_quest_complete = true
+			set is_in_dialog = false
+			=> END
+else:
+	ELRAFA: Muchas gracias.
+	set is_in_dialog = false
+	=> END
+	
+~ pick_key
+
+set is_in_dialog = true
+¡Has encontrado una llave!
+set is_key_found = true
+set is_in_dialog = false
+=> END
