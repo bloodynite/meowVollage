@@ -15,6 +15,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	change_scene()
+	is_key_found()
 
 
 func _on_cliff_side_transition_body_entered(body):
@@ -32,4 +33,3 @@ func change_scene():
 			Global.game_first_load = false
 			get_tree().change_scene_to_file("res://scenes/cliff_side.tscn")
 			Global.finish_change_scene()
-
