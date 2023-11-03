@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://05gp17st7o1v"]
+[gd_scene load_steps=59 format=3 uid="uid://05gp17st7o1v"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4t26c"]
 [ext_resource type="Texture2D" uid="uid://okqdccaqcm3w" path="res://art/characters/player.png" id="2_nyakl"]
@@ -417,22 +417,28 @@ animations = [{
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xqxm5"]
-radius = 13.0
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c5pv6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_at2t1"]
+radius = 5.0
 
 [node name="player" type="CharacterBody2D"]
-y_sort_enabled = true
 collision_layer = 3
 script = ExtResource("1_4t26c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xjnyy")
-animation = &"side_atack"
-frame_progress = 0.443443
+animation = &"front_idle"
 offset = Vector2(0, -15)
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_tbvnw")
+metadata/_edit_lock_ = true
 
 [node name="player_hitbox" type="Area2D" parent="."]
 metadata/_edit_group_ = true
@@ -481,8 +487,29 @@ show_percentage = false
 wait_time = 5.0
 autostart = true
 
+[node name="Direction" type="Marker2D" parent="."]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="ActionableFinder" type="Area2D" parent="Direction"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/ActionableFinder"]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_c5pv6")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_at2t1")
+
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="deal_attack" to="." method="_on_deal_attack_timeout"]
 [connection signal="timeout" from="regen_timer" to="." method="_on_regen_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

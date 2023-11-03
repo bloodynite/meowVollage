@@ -8,6 +8,10 @@ var enemy_atack_cooldown: bool = true
 var player_alive: bool = true
 var attack_in_progress: bool = false
 
+var is_player_in_quest_area = false
+
+@onready var actionable_finder: Area2D = $Direction/ActionableFinder
+
 func _ready():
 	$AnimatedSprite2D.play("front_idle")
 
@@ -23,35 +27,63 @@ func _physics_process(delta):
 		current_health = 0
 		print('you die')
 		self.queue_free()
+		get_tree().change_scene_to_file('res://UI/game_over.tscn')
+		
 	
+	
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("ui_accept"):
+		var actionables = actionable_finder.get_overlapping_areas()
+		if actionables.size() > 0:
+			print('actionable')
+			actionables[0].action()
+			return
+
 func player_movement(delta):
-	
-	if Input.is_action_pressed("ui_right"):
-		current_dir = 'right'
-		play_animation(1)
-		velocity.x = speed
-		velocity.y = 0
-	elif Input.is_action_pressed("ui_left"):
-		current_dir = 'left'
-		play_animation(1)
-		velocity.x = -speed
-		velocity.y = 0
-	elif Input.is_action_pressed("ui_up"):
-		current_dir = 'up'
-		play_animation(1)
-		velocity.x = 0
-		velocity.y = -speed
-	elif Input.is_action_pressed("ui_down"):
-		current_dir = 'down'
-		play_animation(1)
-		velocity.x = 0
-		velocity.y = speed
-	else: 
-		play_animation(0)
-		velocity.x = 0
-		velocity.y = 0
-	
-	move_and_slide()
+	if !Global.is_in_dialog:
+		if Input.is_action_pressed("ui_right"):
+			$Direction.position.y = 0
+			$Direction.position.x = 5
+			$Direction.rotation = 0
+			$Direction.rotation = -90
+			current_dir = 'right'
+			play_animation(1)
+			velocity.x = speed
+			velocity.y = 0
+		elif Input.is_action_pressed("ui_left"):
+			$Direction.position.y = 0
+			$Direction.position.x = -5
+			$Direction.rotation = 0
+			$Direction.rotation = 90
+			current_dir = 'left'
+			play_animation(1)
+			velocity.x = -speed
+			velocity.y = 0
+		elif Input.is_action_pressed("ui_up"):
+			$Direction.rotation = 0
+			$Direction.position.y = -15
+			$Direction.position.x = 0
+			current_dir = 'up'
+			play_animation(1)
+			velocity.x = 0
+			velocity.y = -speed
+		elif Input.is_action_pressed("ui_down"):
+			$Direction.position.y = 0
+			$Direction.position.x = 0
+			$Direction.rotation = 0
+			current_dir = 'down'
+			play_animation(1)
+			velocity.x = 0
+			velocity.y = speed
+		else: 
+			play_animation(0)
+			velocity.x = 0
+			velocity.y = 0
+		
+#		var actionables = actionable_finder.get_overlapping_areas()
+#		print(actionables[0])
+#		actionable_finder.
+		move_and_slide()
 	
 func play_animation(movement):
 	var dir = current_dir
@@ -168,3 +200,9 @@ func _on_regen_timer_timeout():
 			current_health = Global.player_initial_health
 	elif current_health <= 0:
 		current_health = 0
+
+func _on_area_2d_body_entered(body):
+	if body.has_method('is_key'):
+		DialogueManager.show_example_dialogue_balloon(load("res://dialogues/main.dialogue"), 'pick_key')
+		Global.is_key_found = true
+		body.queue_free()

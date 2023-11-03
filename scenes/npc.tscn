@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://d4c4nuo56kbym"]
+
+[ext_resource type="Texture2D" uid="uid://bsuf2moewbgu1" path="res://art/characters/itty bitty npc.png" id="1_38rlw"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="1_ydwwn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1wmy"]
+atlas = ExtResource("1_38rlw")
+region = Rect2(208, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s8bk"]
+atlas = ExtResource("1_38rlw")
+region = Rect2(208, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4n8yq"]
+atlas = ExtResource("1_38rlw")
+region = Rect2(208, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjl8c"]
+atlas = ExtResource("1_38rlw")
+region = Rect2(208, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_estir"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1wmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s8bk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4n8yq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjl8c")
+}],
+"loop": true,
+"name": &"looking",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akcsw"]
+size = Vector2(7.08333, 4.16667)
+
+[node name="npc" type="StaticBody2D"]
+y_sort_enabled = true
+scale = Vector2(1.2, 1.2)
+collision_mask = 16
+script = ExtResource("1_ydwwn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -4.16667)
+sprite_frames = SubResource("SpriteFrames_estir")
+animation = &"looking"
+offset = Vector2(2.08165e-12, -5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-0.208333, -2.91667)
+shape = SubResource("RectangleShape2D_akcsw")
