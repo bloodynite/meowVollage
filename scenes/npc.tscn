@@ -39,8 +39,8 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_aeens"]
-radius = 4.16667
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akcsw"]
+size = Vector2(7.08333, 4.16667)
 
 [node name="npc" type="StaticBody2D"]
 y_sort_enabled = true
@@ -57,5 +57,5 @@ offset = Vector2(2.08165e-12, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, -4.16667)
-shape = SubResource("CircleShape2D_aeens")
+position = Vector2(-0.208333, -2.91667)
+shape = SubResource("RectangleShape2D_akcsw")

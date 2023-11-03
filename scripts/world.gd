@@ -15,7 +15,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	change_scene()
-	is_key_found()
 
 
 func _on_cliff_side_transition_body_entered(body):

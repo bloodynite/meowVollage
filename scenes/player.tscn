@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://05gp17st7o1v"]
+[gd_scene load_steps=59 format=3 uid="uid://05gp17st7o1v"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4t26c"]
 [ext_resource type="Texture2D" uid="uid://okqdccaqcm3w" path="res://art/characters/player.png" id="2_nyakl"]
@@ -417,7 +417,7 @@ animations = [{
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xqxm5"]
-radius = 13.0
+radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c5pv6"]
 
@@ -425,8 +425,6 @@ radius = 13.0
 radius = 5.0
 
 [node name="player" type="CharacterBody2D"]
-z_index = 1
-y_sort_enabled = true
 collision_layer = 3
 script = ExtResource("1_4t26c")
 
@@ -443,7 +441,6 @@ shape = SubResource("CircleShape2D_tbvnw")
 metadata/_edit_lock_ = true
 
 [node name="player_hitbox" type="Area2D" parent="."]
-visible = false
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
@@ -491,7 +488,6 @@ wait_time = 5.0
 autostart = true
 
 [node name="Direction" type="Marker2D" parent="."]
-visible = false
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 

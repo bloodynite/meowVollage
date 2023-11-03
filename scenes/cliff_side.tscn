@@ -843,6 +843,7 @@ size = Vector2(99, 32)
 [sub_resource type="CircleShape2D" id="CircleShape2D_oitkn"]
 
 [node name="cliff_side" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_t5wk8")
 
 [node name="TileMap" type="TileMap" parent="."]
