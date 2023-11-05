@@ -11,13 +11,13 @@ region = Rect2(208, 112, 16, 16)
 atlas = ExtResource("1_38rlw")
 region = Rect2(208, 64, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8s8bk"]
-atlas = ExtResource("1_38rlw")
-region = Rect2(208, 80, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_l1wmy"]
 atlas = ExtResource("1_38rlw")
 region = Rect2(208, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s8bk"]
+atlas = ExtResource("1_38rlw")
+region = Rect2(208, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4n8yq"]
 atlas = ExtResource("1_38rlw")
@@ -43,14 +43,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8s8bk")
-}],
-"loop": true,
-"name": &"left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_l1wmy")
 }, {
 "duration": 1.0,
@@ -63,8 +55,16 @@ animations = [{
 "texture": SubResource("AtlasTexture_tjl8c")
 }],
 "loop": true,
-"name": &"looking",
+"name": &"idle",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s8bk")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -88,7 +88,7 @@ script = ExtResource("1_ydwwn")
 y_sort_enabled = true
 position = Vector2(0, -4.16667)
 sprite_frames = SubResource("SpriteFrames_estir")
-animation = &"right"
+animation = &"idle"
 offset = Vector2(2.08165e-12, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -126,10 +126,12 @@ polygon = PackedVector2Array(0, 0, -20, 16.6667, 20, 16.6667)
 [node name="exit_area" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="exit_area"]
-polygon = PackedVector2Array(-26.6667, 20, 26.6667, 20, 26.6667, -26.6667, -26.6667, -26.6667, -26.6667, 20, -20, 13.3333, -20, -20, 20, -20, 20, 13.3333, -19.1667, 13.3333)
+position = Vector2(-0.416667, -3.75)
+scale = Vector2(4.04167, 3.125)
+polygon = PackedVector2Array(-6.49484, -5.2, -6.49484, 7.6, 6.70103, 7.6, 6.70103, -7.33333, -6.49484, -7.33333, -6.49484, -5.2, -8.14433, -5.2, -8.14433, -9.46667, 8.35052, -9.46667, 8.35052, 9.73333, -8.14433, 9.73333, -8.14433, -5.2)
 
 [connection signal="body_entered" from="front_area" to="." method="_on_front_area_body_entered"]
 [connection signal="body_entered" from="left_area" to="." method="_on_left_area_body_entered"]
 [connection signal="body_entered" from="right_area" to="." method="_on_right_area_body_entered"]
 [connection signal="body_entered" from="back_area" to="." method="_on_back_area_body_entered"]
-[connection signal="body_exited" from="exit_area" to="." method="_on_exit_area_body_exited"]
+[connection signal="body_entered" from="exit_area" to="." method="_on_exit_area_body_entered"]

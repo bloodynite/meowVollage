@@ -204,15 +204,3 @@ func _on_area_2d_body_entered(body):
 		DialogueManager.show_example_dialogue_balloon(load("res://dialogues/main.dialogue"), 'pick_key')
 		Global.is_key_found = true
 		body.queue_free()
-
-
-func _on_animated_sprite_2d_animation_finished():
-	print('termino')
-
-
-func _on_animated_sprite_2d_animation_changed():
-	var animacion = $AnimatedSprite2D.animation
-	print(animacion)
-	if animacion == 'front_walk':
-		print('si es')
-		

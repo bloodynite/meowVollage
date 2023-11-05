@@ -441,6 +441,7 @@ shape = SubResource("CircleShape2D_tbvnw")
 metadata/_edit_lock_ = true
 
 [node name="player_hitbox" type="Area2D" parent="."]
+visible = false
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
@@ -488,6 +489,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="Direction" type="Marker2D" parent="."]
+visible = false
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -501,14 +503,13 @@ shape = SubResource("CircleShape2D_c5pv6")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_at2t1")
 
-[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
