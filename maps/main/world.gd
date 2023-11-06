@@ -30,5 +30,5 @@ func change_scene():
 	if Global.transition_scene:
 		if Global.current_scene == 'world':
 			Global.game_first_load = false
-			get_tree().change_scene_to_file("res://scenes/cliff_side.tscn")
+			get_tree().change_scene_to_file("res://maps/cliff_side/cliff_side.tscn")
 			Global.finish_change_scene()

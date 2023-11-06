@@ -21,5 +21,5 @@ func _on_cliffside_exit_area_body_exited(body):
 func change_scenes():
 	if Global.transition_scene:
 		if Global.current_scene == 'cliff_side':
-			get_tree().change_scene_to_file("res://scenes/world.tscn")
+			get_tree().change_scene_to_file("res://maps/main/world.tscn")
 			Global.finish_change_scene()
