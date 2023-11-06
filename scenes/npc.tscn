@@ -99,20 +99,19 @@ shape = SubResource("RectangleShape2D_akcsw")
 [node name="front_area" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="front_area"]
-position = Vector2(0, -3.33333)
 polygon = PackedVector2Array(0, 0, -20, 16.6667, 20, 16.6667)
 
 [node name="left_area" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="left_area"]
-position = Vector2(0, -3.33333)
+position = Vector2(-3.33333, -3.33333)
 rotation = 1.5708
 polygon = PackedVector2Array(0, 0, -16.6667, 20, 16.6667, 20)
 
 [node name="right_area" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="right_area"]
-position = Vector2(0, -3.33333)
+position = Vector2(3.33333, -3.33333)
 rotation = -1.5708
 polygon = PackedVector2Array(0, 0, -16.6667, 20, 16.6667, 20)
 
@@ -120,7 +119,7 @@ polygon = PackedVector2Array(0, 0, -16.6667, 20, 16.6667, 20)
 rotation = -3.14159
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="back_area"]
-position = Vector2(-2.91409e-07, 3.33333)
+position = Vector2(1.69012e-05, 6.66667)
 polygon = PackedVector2Array(0, 0, -20, 16.6667, 20, 16.6667)
 
 [node name="exit_area" type="Area2D" parent="."]
