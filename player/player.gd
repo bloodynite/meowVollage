@@ -36,7 +36,6 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("ui_accept"):
 		var actionables = actionable_finder.get_overlapping_areas()
 		if actionables.size() > 0:
-			print('actionable')
 			actionables[0].action()
 			return
 
