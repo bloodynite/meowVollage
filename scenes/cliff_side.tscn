@@ -874,7 +874,6 @@ metadata/_edit_group_ = true
 polygon = PackedVector2Array(79, 62, 162, 63, 165, 78, 179, 80, 179, 92, 194, 95, 195, 159, 183, 167, 177, 179, 164, 182, 164, 221, 178, 225, 177, 307, 182, 333, 298, 320, 298, -32, -39, -32, -40, 335, 178, 334, 178, 310, 78, 309, 78, 240, 95, 239, 96, 221, 112, 223, 108, 179, 80, 179, 75, 162, 62, 162, 58, 132, 46, 130, 46, 111, 63, 112, 63, 97, 77, 92)
 
 [node name="player" parent="." instance=ExtResource("4_d12rl")]
-z_index = 0
 position = Vector2(129, 265)
 
 [node name="cliffside_exit_area" type="Area2D" parent="."]

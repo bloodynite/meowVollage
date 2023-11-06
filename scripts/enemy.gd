@@ -13,11 +13,13 @@ func _physics_process(delta):
 	update_health()
 	
 	if player_chase:
-		position += (player.position - position)/speed
 		var distance = player.position.distance_to(position)
 		if distance < 10:
+#			position -= (player.position - position)/speed
 			$AnimatedSprite2D.play("atack")
 		else:
+			position += (player.position - position)/speed
+#			player_chase = truew
 			$AnimatedSprite2D.play("walk")
 			if (player.position.x - position.x ) < 0:
 				$AnimatedSprite2D.flip_h = true

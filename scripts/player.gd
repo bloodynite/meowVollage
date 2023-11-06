@@ -23,6 +23,7 @@ func _physics_process(delta):
 	update_heath()
 	
 	if current_health <= 0:
+		$AnimatedSprite2D.play("death")
 		player_alive = false #add game over
 		current_health = 0
 		print('you die')
@@ -79,10 +80,7 @@ func player_movement(delta):
 			play_animation(0)
 			velocity.x = 0
 			velocity.y = 0
-		
-#		var actionables = actionable_finder.get_overlapping_areas()
-#		print(actionables[0])
-#		actionable_finder.
+			
 		move_and_slide()
 	
 func play_animation(movement):
@@ -189,7 +187,7 @@ func update_heath():
 		elif current_health >= (Global.player_initial_health/4) and current_health <= ((Global.player_initial_health/4)*3):
 			healthBarRef.modulate = 'YELLOW'
 		#si la vida es menor/igual que 25% se pinta roja
-		elif current_health <= (Global.player_initial_health/4):
+		elif current_health < (Global.player_initial_health/4):
 			healthBarRef.modulate = 'DARKRED'
 
 func _on_regen_timer_timeout():

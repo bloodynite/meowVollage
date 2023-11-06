@@ -1,7 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4c4nuo56kbym"]
+[gd_scene load_steps=10 format=3 uid="uid://d4c4nuo56kbym"]
 
 [ext_resource type="Texture2D" uid="uid://bsuf2moewbgu1" path="res://art/characters/itty bitty npc.png" id="1_38rlw"]
 [ext_resource type="Script" path="res://scripts/npc.gd" id="1_ydwwn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjl8c"]
+atlas = ExtResource("1_38rlw")
+region = Rect2(208, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0q7w0"]
+atlas = ExtResource("1_38rlw")
+region = Rect2(208, 64, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l1wmy"]
 atlas = ExtResource("1_38rlw")
@@ -15,12 +23,24 @@ region = Rect2(208, 80, 16, 16)
 atlas = ExtResource("1_38rlw")
 region = Rect2(208, 96, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tjl8c"]
-atlas = ExtResource("1_38rlw")
-region = Rect2(208, 112, 16, 16)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_estir"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjl8c")
+}],
+"loop": true,
+"name": &"back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0q7w0")
+}],
+"loop": true,
+"name": &"front",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l1wmy")
@@ -35,8 +55,24 @@ animations = [{
 "texture": SubResource("AtlasTexture_tjl8c")
 }],
 "loop": true,
-"name": &"looking",
+"name": &"idle",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s8bk")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4n8yq")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akcsw"]
@@ -52,10 +88,49 @@ script = ExtResource("1_ydwwn")
 y_sort_enabled = true
 position = Vector2(0, -4.16667)
 sprite_frames = SubResource("SpriteFrames_estir")
-animation = &"looking"
+animation = &"idle"
 offset = Vector2(2.08165e-12, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
 position = Vector2(-0.208333, -2.91667)
 shape = SubResource("RectangleShape2D_akcsw")
+
+[node name="front_area" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="front_area"]
+polygon = PackedVector2Array(0, 0, -20, 16.6667, 20, 16.6667)
+
+[node name="left_area" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="left_area"]
+position = Vector2(-3.33333, -3.33333)
+rotation = 1.5708
+polygon = PackedVector2Array(0, 0, -16.6667, 20, 16.6667, 20)
+
+[node name="right_area" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="right_area"]
+position = Vector2(3.33333, -3.33333)
+rotation = -1.5708
+polygon = PackedVector2Array(0, 0, -16.6667, 20, 16.6667, 20)
+
+[node name="back_area" type="Area2D" parent="."]
+rotation = -3.14159
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="back_area"]
+position = Vector2(1.69012e-05, 6.66667)
+polygon = PackedVector2Array(0, 0, -20, 16.6667, 20, 16.6667)
+
+[node name="exit_area" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="exit_area"]
+position = Vector2(-0.416667, -3.75)
+scale = Vector2(4.04167, 3.125)
+polygon = PackedVector2Array(-6.49484, -5.2, -6.49484, 7.6, 6.70103, 7.6, 6.70103, -7.33333, -6.49484, -7.33333, -6.49484, -5.2, -8.14433, -5.2, -8.14433, -9.46667, 8.35052, -9.46667, 8.35052, 9.73333, -8.14433, 9.73333, -8.14433, -5.2)
+
+[connection signal="body_entered" from="front_area" to="." method="_on_front_area_body_entered"]
+[connection signal="body_entered" from="left_area" to="." method="_on_left_area_body_entered"]
+[connection signal="body_entered" from="right_area" to="." method="_on_right_area_body_entered"]
+[connection signal="body_entered" from="back_area" to="." method="_on_back_area_body_entered"]
+[connection signal="body_entered" from="exit_area" to="." method="_on_exit_area_body_entered"]
