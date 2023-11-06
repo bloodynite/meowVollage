@@ -28,7 +28,7 @@ func _physics_process(delta):
 		current_health = 0
 		print('you die')
 		self.queue_free()
-		get_tree().change_scene_to_file('res://UI/game_over.tscn')
+		get_tree().change_scene_to_file("res://ui/game_over/game_over.tscn")
 		
 	
 	
@@ -36,7 +36,6 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("ui_accept"):
 		var actionables = actionable_finder.get_overlapping_areas()
 		if actionables.size() > 0:
-			print('actionable')
 			actionables[0].action()
 			return
 

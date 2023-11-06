@@ -1,16 +1,16 @@
 [gd_scene load_steps=15 format=3 uid="uid://ujan60gphv2w"]
 
-[ext_resource type="Texture2D" uid="uid://bjn2s214ttq6t" path="res://art/tilesets/plains.png" id="1_1x8im"]
-[ext_resource type="Script" path="res://scripts/cliff_side.gd" id="1_t5wk8"]
-[ext_resource type="Texture2D" uid="uid://dfldv8iyyc5tj" path="res://art/tilesets/grass.png" id="2_rqbo7"]
-[ext_resource type="Texture2D" uid="uid://d2tskjs8f6e7i" path="res://art/objects/objects.png" id="3_7oiaf"]
-[ext_resource type="PackedScene" uid="uid://05gp17st7o1v" path="res://scenes/player.tscn" id="4_d12rl"]
-[ext_resource type="PackedScene" uid="uid://d4c4nuo56kbym" path="res://scenes/npc.tscn" id="6_q5jx1"]
-[ext_resource type="PackedScene" uid="uid://dnvdjw2262ypn" path="res://scenes/actionable.tscn" id="7_76obe"]
-[ext_resource type="Resource" uid="uid://fru1oywvd0lm" path="res://dialogues/main.dialogue" id="8_lxioj"]
+[ext_resource type="Script" path="res://maps/cliff_side/cliff_side.gd" id="1_0p8nk"]
+[ext_resource type="Texture2D" uid="uid://bjn2s214ttq6t" path="res://art/tilesets/plains.png" id="2_qkkmc"]
+[ext_resource type="Texture2D" uid="uid://dfldv8iyyc5tj" path="res://art/tilesets/grass.png" id="3_8lwpf"]
+[ext_resource type="Texture2D" uid="uid://d2tskjs8f6e7i" path="res://art/objects/objects.png" id="4_dfyny"]
+[ext_resource type="PackedScene" uid="uid://05gp17st7o1v" path="res://scenes/player.tscn" id="5_wlgny"]
+[ext_resource type="PackedScene" uid="uid://d4c4nuo56kbym" path="res://npcs/el_rafa/npc.tscn" id="6_sc212"]
+[ext_resource type="PackedScene" uid="uid://dnvdjw2262ypn" path="res://scenes/actionable.tscn" id="7_sdg6u"]
+[ext_resource type="Resource" uid="uid://fru1oywvd0lm" path="res://dialogues/main.dialogue" id="8_16bsm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_feuny"]
-texture = ExtResource("1_1x8im")
+texture = ExtResource("2_qkkmc")
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
@@ -199,13 +199,13 @@ texture = ExtResource("1_1x8im")
 5:10/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xdqse"]
-texture = ExtResource("2_rqbo7")
+texture = ExtResource("3_8lwpf")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fuxoc"]
-texture = ExtResource("3_7oiaf")
+texture = ExtResource("4_dfyny")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -844,7 +844,7 @@ size = Vector2(99, 32)
 
 [node name="cliff_side" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_t5wk8")
+script = ExtResource("1_0p8nk")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_68p50")
@@ -873,7 +873,7 @@ metadata/_edit_group_ = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(79, 62, 162, 63, 165, 78, 179, 80, 179, 92, 194, 95, 195, 159, 183, 167, 177, 179, 164, 182, 164, 221, 178, 225, 177, 307, 182, 333, 298, 320, 298, -32, -39, -32, -40, 335, 178, 334, 178, 310, 78, 309, 78, 240, 95, 239, 96, 221, 112, 223, 108, 179, 80, 179, 75, 162, 62, 162, 58, 132, 46, 130, 46, 111, 63, 112, 63, 97, 77, 92)
 
-[node name="player" parent="." instance=ExtResource("4_d12rl")]
+[node name="player" parent="." instance=ExtResource("5_wlgny")]
 position = Vector2(129, 265)
 
 [node name="cliffside_exit_area" type="Area2D" parent="."]
@@ -883,11 +883,11 @@ metadata/_edit_group_ = true
 position = Vector2(127.5, 294)
 shape = SubResource("RectangleShape2D_6inuf")
 
-[node name="npc" parent="." instance=ExtResource("6_q5jx1")]
+[node name="npc" parent="." instance=ExtResource("6_sc212")]
 position = Vector2(127, 118)
 
-[node name="Actionable" parent="npc" instance=ExtResource("7_76obe")]
-dialog_resource = ExtResource("8_lxioj")
+[node name="Actionable" parent="npc" instance=ExtResource("7_sdg6u")]
+dialog_resource = ExtResource("8_16bsm")
 dialog_start = "beared_guy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npc/Actionable"]

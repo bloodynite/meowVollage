@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://d4c4nuo56kbym"]
 
 [ext_resource type="Texture2D" uid="uid://bsuf2moewbgu1" path="res://art/characters/itty bitty npc.png" id="1_38rlw"]
-[ext_resource type="Script" path="res://scripts/npc.gd" id="1_ydwwn"]
+[ext_resource type="Script" path="res://npcs/el_rafa/npc.gd" id="1_ydwwn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tjl8c"]
 atlas = ExtResource("1_38rlw")
