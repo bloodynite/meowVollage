@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://ujan60gphv2w"]
+[gd_scene load_steps=16 format=3 uid="uid://ujan60gphv2w"]
 
 [ext_resource type="Script" path="res://maps/cliff_side/cliff_side.gd" id="1_0p8nk"]
 [ext_resource type="Texture2D" uid="uid://bjn2s214ttq6t" path="res://art/tilesets/plains.png" id="2_qkkmc"]
 [ext_resource type="Texture2D" uid="uid://dfldv8iyyc5tj" path="res://art/tilesets/grass.png" id="3_8lwpf"]
 [ext_resource type="Texture2D" uid="uid://d2tskjs8f6e7i" path="res://art/objects/objects.png" id="4_dfyny"]
-[ext_resource type="PackedScene" uid="uid://05gp17st7o1v" path="res://scenes/player.tscn" id="5_wlgny"]
+[ext_resource type="PackedScene" uid="uid://05gp17st7o1v" path="res://player/player.tscn" id="5_wlgny"]
 [ext_resource type="PackedScene" uid="uid://d4c4nuo56kbym" path="res://npcs/el_rafa/npc.tscn" id="6_sc212"]
-[ext_resource type="PackedScene" uid="uid://dnvdjw2262ypn" path="res://scenes/actionable.tscn" id="7_sdg6u"]
+[ext_resource type="PackedScene" uid="uid://dnvdjw2262ypn" path="res://utils/actionable.tscn" id="7_sdg6u"]
 [ext_resource type="Resource" uid="uid://fru1oywvd0lm" path="res://dialogues/main.dialogue" id="8_16bsm"]
+[ext_resource type="Texture2D" uid="uid://crcbtgqnyltdj" path="res://art/objects/key.png" id="9_rxlgd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_feuny"]
 texture = ExtResource("2_qkkmc")
@@ -896,6 +897,15 @@ shape = SubResource("CircleShape2D_oitkn")
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 37.0
+offset_bottom = 38.0
+texture = ExtResource("9_rxlgd")
 
 [connection signal="body_entered" from="cliffside_exit_area" to="." method="_on_cliffside_exit_area_body_entered"]
 [connection signal="body_exited" from="cliffside_exit_area" to="." method="_on_cliffside_exit_area_body_exited"]

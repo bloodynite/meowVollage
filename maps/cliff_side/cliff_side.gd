@@ -3,12 +3,19 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if Global.is_key_found:
+		$CanvasLayer.visible = true
+	else:
+		$CanvasLayer.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	change_scenes()
+	if Global.is_key_found:
+		$CanvasLayer.visible = true
+	if Global.is_key_quest_complete:
+		$CanvasLayer.visible = false
 
 func _on_cliffside_exit_area_body_entered(body: Node2D):
 	if body.has_method('player'):

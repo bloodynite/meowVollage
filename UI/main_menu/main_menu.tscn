@@ -1,19 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2gdfvt4suacq"]
+[gd_scene load_steps=5 format=3 uid="uid://d2gdfvt4suacq"]
 
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_dxwgv"]
 [ext_resource type="Texture2D" uid="uid://jlajat8xmt6o" path="res://ui/main_menu/main screen.jpg" id="2_rdqyq"]
+[ext_resource type="Theme" uid="uid://bkwekad3s4yen" path="res://ui/main_menu/main_menu.tres" id="3_5k5sw"]
 [ext_resource type="Script" path="res://ui/main_menu/main_menu_btn.gd" id="3_c7wld"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5u6v"]
-bg_color = Color(0.0352941, 0.137255, 0.345098, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_okxba"]
-bg_color = Color(0.133333, 0.333333, 0.741176, 1)
-
-[sub_resource type="Theme" id="Theme_ne22r"]
-default_font_size = 36
-Button/styles/hover = SubResource("StyleBoxFlat_i5u6v")
-Button/styles/normal = SubResource("StyleBoxFlat_okxba")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -39,12 +29,12 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -112.0
-offset_top = -71.0
-offset_right = 113.0
-offset_bottom = -13.0
+offset_left = -112.5
+offset_top = -78.0
+offset_right = 112.5
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = SubResource("Theme_ne22r")
+theme = ExtResource("3_5k5sw")
 text = "JUGAR"
 script = ExtResource("3_c7wld")

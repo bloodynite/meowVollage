@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbrheblhitdqi"]
+[gd_scene load_steps=14 format=3 uid="uid://dbrheblhitdqi"]
 
 [ext_resource type="Script" path="res://maps/main/world.gd" id="1_3cnnh"]
 [ext_resource type="Texture2D" uid="uid://bjn2s214ttq6t" path="res://art/tilesets/plains.png" id="2_x5koa"]
 [ext_resource type="Texture2D" uid="uid://dfldv8iyyc5tj" path="res://art/tilesets/grass.png" id="3_gnlol"]
 [ext_resource type="Texture2D" uid="uid://d2tskjs8f6e7i" path="res://art/objects/objects.png" id="4_b5aoj"]
-[ext_resource type="PackedScene" uid="uid://05gp17st7o1v" path="res://scenes/player.tscn" id="5_8qh2b"]
+[ext_resource type="PackedScene" uid="uid://05gp17st7o1v" path="res://player/player.tscn" id="5_8qh2b"]
 [ext_resource type="PackedScene" uid="uid://367b087kqfys" path="res://npcs/slime/enemy.tscn" id="6_ekrdf"]
-[ext_resource type="PackedScene" uid="uid://clvylo4bcmdm0" path="res://scenes/key.tscn" id="7_tvgqv"]
+[ext_resource type="PackedScene" uid="uid://clvylo4bcmdm0" path="res://items/key/key.tscn" id="7_tvgqv"]
+[ext_resource type="Texture2D" uid="uid://crcbtgqnyltdj" path="res://art/objects/key.png" id="8_1dygb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nsccf"]
 texture = ExtResource("2_x5koa")
@@ -306,6 +307,15 @@ shape = SubResource("RectangleShape2D_yx1di")
 [node name="key" parent="." instance=ExtResource("7_tvgqv")]
 position = Vector2(441, 37)
 collision_layer = 16
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 37.0
+offset_bottom = 38.0
+texture = ExtResource("8_1dygb")
 
 [connection signal="body_entered" from="cliff_side_transition" to="." method="_on_cliff_side_transition_body_entered"]
 [connection signal="body_exited" from="cliff_side_transition" to="." method="_on_cliff_side_transition_body_exited"]

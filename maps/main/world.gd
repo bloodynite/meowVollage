@@ -3,6 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$CanvasLayer.visible = false
 	if Global.game_first_load:
 		$player.position.x = Global.player_start_pos_x
 		$player.position.y = Global.player_start_pos_y
@@ -15,6 +16,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	change_scene()
+	if Global.is_key_found:
+		$CanvasLayer.visible = true
+	if Global.is_key_quest_complete:
+		$CanvasLayer.visible = false
 
 
 func _on_cliff_side_transition_body_entered(body):
