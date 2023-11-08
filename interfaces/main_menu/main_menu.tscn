@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://d2gdfvt4suacq"]
 
-[ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_dxwgv"]
-[ext_resource type="Texture2D" uid="uid://jlajat8xmt6o" path="res://ui/main_menu/main screen.jpg" id="2_rdqyq"]
-[ext_resource type="Theme" uid="uid://bkwekad3s4yen" path="res://ui/main_menu/main_menu.tres" id="3_5k5sw"]
-[ext_resource type="Script" path="res://ui/main_menu/main_menu_btn.gd" id="3_c7wld"]
+[ext_resource type="Script" path="res://interfaces/main_menu/main_menu.gd" id="1_ykapy"]
+[ext_resource type="Texture2D" uid="uid://jlajat8xmt6o" path="res://interfaces/main_menu/main screen.jpg" id="2_djgju"]
+[ext_resource type="Theme" uid="uid://bkwekad3s4yen" path="res://interfaces/main_menu/main_menu.tres" id="3_7dq6r"]
+[ext_resource type="Script" path="res://interfaces/main_menu/main_menu_btn.gd" id="4_jaa00"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -12,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_dxwgv")
+script = ExtResource("1_ykapy")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -20,7 +20,7 @@ offset_left = -128.0
 offset_top = -249.0
 offset_right = 1216.0
 offset_bottom = 647.0
-texture = ExtResource("2_rdqyq")
+texture = ExtResource("2_djgju")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -35,6 +35,6 @@ offset_right = 112.5
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("3_5k5sw")
+theme = ExtResource("3_7dq6r")
 text = "JUGAR"
-script = ExtResource("3_c7wld")
+script = ExtResource("4_jaa00")

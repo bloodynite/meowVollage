@@ -28,7 +28,7 @@ func _physics_process(delta):
 		current_health = 0
 		print('you die')
 		self.queue_free()
-		get_tree().change_scene_to_file("res://ui/game_over/game_over.tscn")
+		get_tree().change_scene_to_file("res://interfaces/game_over/game_over.tscn")
 		
 	
 	
