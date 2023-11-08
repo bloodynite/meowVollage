@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bbfk6uj6ggtk2"]
 
-[ext_resource type="Script" path="res://ui/game_over/game_over.gd" id="1_r26iu"]
+[ext_resource type="Script" path="res://interfaces/game_over/game_over.gd" id="1_r26iu"]
 [ext_resource type="Texture2D" uid="uid://7tj3n0r3r7ed" path="res://interfaces/game_over/game over.jpg" id="2_gtq6v"]
 [ext_resource type="Theme" uid="uid://bkwekad3s4yen" path="res://interfaces/main_menu/main_menu.tres" id="3_vicir"]
-[ext_resource type="Script" path="res://ui/game_over/game_over_btn.gd" id="4_ihh5a"]
+[ext_resource type="Script" path="res://interfaces/game_over/game_over_btn.gd" id="4_ihh5a"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
